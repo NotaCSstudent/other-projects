@@ -1,27 +1,23 @@
-struct Node
-{
-   x : i32,
-   y : i32,
-   z : i32,
-}
 
-impl Node 
-{
-    pub fn create(mut self, a:i32,b:i32,c:i32)
-    {
-        self.x = a;
-        self.y = b;
-        self.z = c;
+
+pub fn is_palindrome(x: i32) -> bool {
+    if x < 0 || (x % 10 == 0 && x != 0) {
+        return false;
     }
 
+    let mut reversed = 0;
+    let mut m_x = x;
+    while m_x > reversed {
+        reversed = reversed * 10 + m_x % 10;
+        m_x /= 10;
+    }
+
+    m_x == reversed || m_x == reversed/10
 }
 
 
 
 fn main() 
 {
-    let t = Node{ x: 32, y:42 , z:89};
-    //t.create(1,2,3);
-    println!("{}",t.x);
-    println!("Hello World")
+   println!("{}",is_palindrome(1001))
 }
